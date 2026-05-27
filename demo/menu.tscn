@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dxim321cqypyc"]
+
+[ext_resource type="Script" uid="uid://b0yldb3xy28qh" path="res://demo/menu.gd" id="1_menu"]
+
+[node name="Menu" type="Control" unique_id=711733090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1361588946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3452393, 0.40972704, 0.32793754, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1010351631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.9994079)
+
+[node name="widgets" type="VBoxContainer" parent="CenterContainer" unique_id=1734371033]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="title" type="Label" parent="CenterContainer/widgets" unique_id=403438119]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "FreeMP"
+horizontal_alignment = 1
+
+[node name="DevModeCheckBox" type="CheckBox" parent="CenterContainer/widgets" unique_id=1867528108]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Dev Mode"
+
+[node name="AccountContainer" type="HBoxContainer" parent="CenterContainer/widgets" unique_id=466926198]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="AccountIdInput" type="LineEdit" parent="CenterContainer/widgets/AccountContainer" unique_id=2000000004]
+layout_mode = 2
+text = "example_id"
+placeholder_text = "Account ID"
+expand_to_text_length = true
+
+[node name="AccountKeyInput" type="LineEdit" parent="CenterContainer/widgets/AccountContainer" unique_id=2000000005]
+layout_mode = 2
+text = "example_key"
+placeholder_text = "Account Key"
+expand_to_text_length = true
+
+[node name="HostContainer" type="HBoxContainer" parent="CenterContainer/widgets" unique_id=2000000001]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="HostInput" type="LineEdit" parent="CenterContainer/widgets/HostContainer" unique_id=2000000002]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "freemp.sleepless.com"
+placeholder_text = "Host"
+expand_to_text_length = true
+
+[node name="PortInput" type="LineEdit" parent="CenterContainer/widgets/HostContainer" unique_id=2000000006]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "443"
+placeholder_text = "Port"
+max_length = 5
+
+[node name="UseSslCheckBox" type="CheckBox" parent="CenterContainer/widgets/HostContainer" unique_id=2000000007]
+layout_mode = 2
+button_pressed = true
+text = "Use SSL"
+
+[node name="JoinGameContainer" type="HBoxContainer" parent="CenterContainer/widgets" unique_id=1318795377]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="JoinGame" type="Button" parent="CenterContainer/widgets/JoinGameContainer" unique_id=1929296414]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Join Game"
+
+[node name="GameIdInput" type="LineEdit" parent="CenterContainer/widgets/JoinGameContainer" unique_id=1020880115]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "test"
+placeholder_text = "Game ID"
+max_length = 8
+expand_to_text_length = true
+
+[node name="Exit" type="Button" parent="CenterContainer/widgets" unique_id=1867528107]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit"
+
+[node name="loading" type="VBoxContainer" parent="CenterContainer" unique_id=1350224867]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/loading" unique_id=1997961015]
+layout_mode = 2
+text = "Loading ..."
+
+[connection signal="toggled" from="CenterContainer/widgets/DevModeCheckBox" to="." method="_on_dev_mode_toggled"]
+[connection signal="toggled" from="CenterContainer/widgets/HostContainer/UseSslCheckBox" to="." method="_on_use_ssl_toggled"]
+[connection signal="pressed" from="CenterContainer/widgets/JoinGameContainer/JoinGame" to="." method="_on_join_game_pressed"]
+[connection signal="pressed" from="CenterContainer/widgets/Exit" to="." method="_on_exit_pressed"]
